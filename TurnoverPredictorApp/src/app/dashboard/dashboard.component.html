@@ -1,0 +1,77 @@
+<!-- <div class="mat-title">Dashboard</div> -->
+<mat-grid-list cols="3">
+    <mat-grid-tile *ngIf="this.authService.currentUser.jobRole === 'Human Resources'">
+        <mat-card class="dashboard-card">
+            <mat-card-header>
+                <mat-card-title>Real time prediction</mat-card-title>
+                <mat-card-subtitle>(in %)</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div [hidden]="!predictChart">
+                    <canvas id="predictCanvas">{{ predictChart }}</canvas>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button [routerLink]="['/predictor']" color="accent">Go to predictor</button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile *ngIf="this.authService.currentUser.jobRole === 'Human Resources'">
+        <mat-card class="dashboard-card">
+            <mat-card-header>
+                <mat-card-title>Average Feedback</mat-card-title>
+                <mat-card-subtitle>(in %)</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <div class="mat-subheading-2">Job Satisfaction </div>
+                <div class="mat-display-1">
+                    <!-- <strong>{{this.feedbackAvg.avgJobSatis}}</strong> -->
+                    <div class="small-canvas" [hidden]="!jobSatChart">
+                        <canvas id="jobSatCanvas">{{ jobSatChart }}</canvas>
+                    </div>
+                </div><br><br>
+                <div class="mat-subheading-2">Env. Satisfaction </div>
+                <div class="mat-display-1">
+                    <div class="small-canvas" [hidden]="!jobEnvChart">
+                        <canvas id="jobEnvCanvas">{{ jobEnvChart }}</canvas>
+                    </div>
+                </div><br><br>
+                <div class="mat-subheading-2">Work Life Balance </div>
+                <div class="mat-display-1">
+                    <div class="small-canvas" [hidden]="!wLBChart">
+                        <canvas id="wLBCanvas">{{ wLBChart }}</canvas>
+                    </div>
+                </div><br><br>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile *ngIf="this.authService.currentUser.jobRole === 'Human Resources'">
+        <mat-card class="dashboard-card">
+            <mat-card-header>
+                <mat-card-title>Average Performance</mat-card-title>
+                <mat-card-subtitle>(in %)</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="mat-subheading-2">Perf. Rating </div>
+                <div class="mat-display-1">
+                    <div class="small-canvas" [hidden]="!perfRatChart">
+                        <canvas id="perfRatCanvas">{{ perfRatChart }}</canvas>
+                    </div>
+                </div><br><br>
+                <div class="mat-subheading-2">Job Involvement </div>
+                <div class="mat-display-1">
+                    <div class="small-canvas" [hidden]="!jobInvChart">
+                        <canvas id="jobInvCanvas">{{ jobInvChart }}</canvas>
+                    </div>
+                </div><br><br>
+                <div class="mat-subheading-2">Over Time </div>
+                <div class="mat-display-1">
+                    <div class="small-canvas" [hidden]="!overChart">
+                        <canvas id="overCanvas">{{ overChart }}</canvas>
+                    </div>
+                </div><br><br>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
